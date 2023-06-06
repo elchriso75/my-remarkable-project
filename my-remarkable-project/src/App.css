@@ -1,38 +1,39 @@
-.App {
-  text-align: center;
+:root {
+    --font-size-root: 10px;
+    --primary: #32B54B;
+    --secondary: #6c757d;
+    --success: #85D977;
+    --info: #17a2b8;
+    --warning: #fdc644;
+    --danger: #FF3744;
+    --light: #f8f9fa;
+    --dark: #343a40;
+    --breakpoint-xs: 0;
+    --breakpoint-sm: 576px;
+    --breakpoint-md: 768px;
+    --breakpoint-mm: 940px;
+    --breakpoint-lg: 992px;
+    --breakpoint-xl: 1200px;
+    --breakpoint-xxl: 1360px;
+    --font-family-sans-serif: "Gotham SSm A", "Gotham SSm B", sans-serif;
+    --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul, ol {
+    margin: 0px;
+    padding: 0px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+@import "css/header.css";
+@import "css/button.css";
+
+
+.home {
+    background-color: black;
+    background-image: url('/public/dsc09580-lift-passes.jpg');
+    background-repeat:no-repeat;
+    background-size: cover;
+    min-height: 1000px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}

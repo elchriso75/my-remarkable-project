@@ -1,23 +1,27 @@
-import logo from './logo.svg';
+import { RemarkablesLogo } from './remarkable-header-logo'
 import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="App home">
+        <header className="site-header">
+              <RemarkablesLogo />
+
+              <div class="l-flex-wrapper">
+                  <ul className="site-header__actions">
+                      <li>
+                          <a class="btn btn-small btn-primary" href="/map">Map</a>
+                      </li>
+                  </ul>
+
+                  
+              </div>
+              
+        </header>
+        
+        <div className="remarkable-content">
+            The main page
+        </div>
     </div>
   );
 }
