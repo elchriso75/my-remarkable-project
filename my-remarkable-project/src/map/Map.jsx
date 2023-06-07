@@ -10,6 +10,7 @@ function Map() {
     const mapRef = useRef(null)
     const [tiles, setTiles] = useState([]);
 
+    // Generates a unique id for use with each tile.
     const getUniqueId = () => {
         return parseInt(Date.now())
     }
