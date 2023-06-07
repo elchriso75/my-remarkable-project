@@ -72,7 +72,7 @@ function Map() {
             id: getUniqueId(),
             x: mouseX,
             y: mouseY,
-            title: `mouseX: ${mouseX} mouseY: ${mouseY} hello world`
+            title: `X: ${mouseX} Y: ${mouseY}`
         };
         
         const newTiles = [
