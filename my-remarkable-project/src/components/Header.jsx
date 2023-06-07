@@ -12,10 +12,10 @@ function Header() {
             <Link to="/">
                 <RemarkablesLogo />
             </Link>
-            <div class="l-flex-wrapper">
+            <div className="l-flex-wrapper">
                 <ul className="site-header__actions">
                     <li>
-                        <Link class="btn btn-small btn-primary" to="/map">Map</Link>
+                        <Link className="btn btn-small btn-primary" to="/map">Map</Link>
                     </li>
                 </ul>
             </div>
