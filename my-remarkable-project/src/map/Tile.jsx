@@ -2,14 +2,14 @@
 
 export { Tile }
 
-function Tile({ tile }) {
+function Tile({ tile, x, y }) {
 
 
 
     return (
         <div className="tile" style={{
-            left: tile.x,
-            top: tile.y
+            left: x,
+            top: y
         }} >
             {tile.title}
         </div>
