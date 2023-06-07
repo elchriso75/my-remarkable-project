@@ -1,0 +1,12 @@
+.map {
+    position: relative;
+}
+
+.tile {
+    display: inline-block;
+    position: absolute;
+    padding: 5px;
+    border: 1px solid black;
+    background-color: white;
+    z-index: 10;
+}

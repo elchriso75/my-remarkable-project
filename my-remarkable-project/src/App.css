@@ -27,7 +27,7 @@ ul, ol {
 
 @import "css/header.css";
 @import "css/button.css";
-
+@import "css/tile.css";
 
 .home {
     background-color: black;
