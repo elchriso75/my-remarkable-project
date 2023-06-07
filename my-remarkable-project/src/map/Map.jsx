@@ -1,5 +1,5 @@
 import { Header } from '../components/Header';
-import { useRef, useState, useLayoutEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { Tile } from './Tile'
 
 export { Map }
@@ -11,18 +11,28 @@ function Map() {
     const [tiles, setTiles] = useState([]);
     const scaleX = useRef(1.0)
     const scaleY = useRef(1.0)
+    const [, setWindowSize] = useState(0);
+    
 
-
-    useLayoutEffect(() => {
-        // before each render, calculate the scale of the map image vs its original size
+    const setScale = useCallback(() => {
         const map = mapRef.current;
         const rect = map.getBoundingClientRect();
-
         scaleX.current = MapWidth / rect.width;
         scaleY.current = MapHeight / rect.height;
+    }, [scaleX, scaleY])
 
-    }, [scaleX, scaleY]);
+    const handleWindowResize = useCallback(() => {
+        setScale();
+        setWindowSize(window.innerWidth);
+    }, [setScale]);    
 
+    useEffect(() => {
+        setScale();
+        window.addEventListener('resize', handleWindowResize);
+        return () => {
+            window.removeEventListener('resize', handleWindowResize);
+        }
+    }, [setScale, handleWindowResize]);
 
     // Generates a unique id for use with each tile.
     const getUniqueId = () => {
@@ -60,7 +70,7 @@ function Map() {
             <Header />
             <div className="remarkable-content" ref={mapRef}>
                 <div className="map" onClick={handleMapClick}>
-                    {                       
+                    {
                         tiles.map(t => {
                             // calculate the x/y values based on the current scale of the map image
                             const x = Math.round(t.x / scaleX.current);
