@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/my-remarkable-project/static/css/main.96e3e0a9.css",
-    "main.js": "/my-remarkable-project/static/js/main.ac10d567.js",
+    "main.js": "/my-remarkable-project/static/js/main.9a6cb3f2.js",
     "static/media/dsc09580-lift-passes.jpg": "/my-remarkable-project/static/media/dsc09580-lift-passes.81f4e1be1d568f53b8b3.jpg",
     "index.html": "/my-remarkable-project/index.html",
     "main.96e3e0a9.css.map": "/my-remarkable-project/static/css/main.96e3e0a9.css.map",
-    "main.ac10d567.js.map": "/my-remarkable-project/static/js/main.ac10d567.js.map"
+    "main.9a6cb3f2.js.map": "/my-remarkable-project/static/js/main.9a6cb3f2.js.map"
   },
   "entrypoints": [
     "static/css/main.96e3e0a9.css",
-    "static/js/main.ac10d567.js"
+    "static/js/main.9a6cb3f2.js"
   ]
 }
