@@ -10,6 +10,9 @@ function Map() {
     const mapRef = useRef(null)
     const [tiles, setTiles] = useState([]);
 
+    const getUniqueId = () => {
+        return parseInt(Date.now())
+    }
 
     function handleMapClick(e) {
         const map = mapRef.current;
@@ -24,10 +27,12 @@ function Map() {
         var mouseY = Math.round((e.clientY - rect.top) * scaleY);
 
         const tile = {
+            id: getUniqueId(),
             x: mouseX,
             y: mouseY,
             title: `mouseX: ${mouseX} mouseY: ${mouseY}`
         };
+        console.log(tile.id)
         const newTiles = [
             ...tiles,
             tile
@@ -42,7 +47,7 @@ function Map() {
                 <div className="map" onClick={handleMapClick}>
                     {tiles.map(t => {
                         return (
-                            <Tile key={t.x} tile={t} />
+                            <Tile key={t.id} tile={t} />
                     )
                     }) }
                     <img src="nzski-the-remarkables-map-2021-web-1600x900-map-only.jpg" alt="Terrain Map" width="100%" />
