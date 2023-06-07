@@ -4,12 +4,23 @@ import { useRef } from 'react';
 export { Map }
 
 function Map() {
+    const MapWidth = 1600;
+    const MapHeight = 900
     const mapRef = useRef(null)
 
     function handleMapClick(e) {
-        alert(mapRef.current.innerHTML)
+        const map = mapRef.current;
 
-        
+        // calculate the x/y position on the map based on the scaled size/display of the map
+        var rect = map.getBoundingClientRect();
+        var scaleX = MapWidth / rect.width;
+        var scaleY = MapHeight / rect.height;
+
+        // scale position: (first adjust, then scale)
+        var mouseX = Math.round((e.clientX - rect.left) * scaleX);
+        var mouseY = Math.round((e.clientY - rect.top) * scaleY);
+
+        alert(`x:${e.clientX} y:${e.clientY - rect.top}   mouseX:${mouseX} mouseY:${mouseY}`)        
     }
 
     return (
