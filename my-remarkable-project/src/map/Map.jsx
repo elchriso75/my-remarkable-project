@@ -62,15 +62,11 @@ function Map() {
 
     const handleMapClick = (e) => {
         const map = mapRef.current;
-
-        // calculate the x/y position on the map based on the scaled size/display of the map
         const rect = map.getBoundingClientRect();
-        const scaleX = MapImage.width / rect.width;
-        const scaleY = MapImage.height / rect.height;
 
         // scale position: (first adjust, then scale)
-        const mouseX = Math.round((e.clientX - rect.left) * scaleX);
-        const mouseY = Math.round((e.clientY - rect.top) * scaleY);
+        const mouseX = Math.round((e.clientX - rect.left) * scaleX.current);
+        const mouseY = Math.round((e.clientY - rect.top) * scaleY.current);
 
         const tile = {
             id: getUniqueId(),
