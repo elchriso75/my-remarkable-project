@@ -5,8 +5,10 @@ import { Tile } from './Tile'
 export { Map }
 
 function Map() {
-    const MapWidth = 1600;
-    const MapHeight = 900
+    const MapImage = {
+        width: 1600,
+        height: 900
+    }
     const mapRef = useRef(null)
     const [tiles, setTiles] = useState([]);
     const scaleX = useRef(1.0)
@@ -17,9 +19,9 @@ function Map() {
     const setScale = useCallback(() => {
         const map = mapRef.current;
         const rect = map.getBoundingClientRect();
-        scaleX.current = MapWidth / rect.width;
-        scaleY.current = MapHeight / rect.height;
-    }, [scaleX, scaleY])
+        scaleX.current = MapImage.width / rect.width;
+        scaleY.current = MapImage.height / rect.height;
+    }, [scaleX, scaleY, MapImage.width, MapImage.height])
 
     const handleWindowResize = useCallback(() => {
         setScale();
@@ -44,8 +46,8 @@ function Map() {
 
         // calculate the x/y position on the map based on the scaled size/display of the map
         const rect = map.getBoundingClientRect();
-        const scaleX = MapWidth / rect.width;
-        const scaleY = MapHeight / rect.height;
+        const scaleX = MapImage.width / rect.width;
+        const scaleY = MapImage.height / rect.height;
 
         // scale position: (first adjust, then scale)
         const mouseX = Math.round((e.clientX - rect.left) * scaleX);
