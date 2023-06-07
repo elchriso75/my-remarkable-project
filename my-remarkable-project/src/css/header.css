@@ -17,7 +17,6 @@
     -webkit-transition: background .5s linear;
     transition: background .5s linear;
     -webkit-backface-visibility: hidden;
-    margin-bottom: 50px;
     height: 84px;
     padding-left: 2.4rem;
 }
