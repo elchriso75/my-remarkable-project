@@ -55,7 +55,7 @@ function Map() {
         }
     }, [setScale, handleWindowResize]);
 
-    // Generates a unique id for use with each tile.
+    // Generates a unique id to allocate to each tile.
     const getUniqueId = () => {
         return parseInt(Date.now())
     }
