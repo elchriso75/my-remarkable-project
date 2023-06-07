@@ -5,17 +5,30 @@ import { Tile } from './Tile'
 export { Map }
 
 function Map() {
+    // Map image dimensions
     const MapImage = {
         width: 1600,
         height: 900
     }
+
+    // reference to the HTML element that contains the map image
     const mapRef = useRef(null)
+
+    // state management for the list of tiles to overlay on the map image
     const [tiles, setTiles] = useState([]);
+
+    // X/Y values to scale the tile positions based on the map size.  Using useRef()
+    // as we don't want to cause a state change when setting these values (as this would cause
+    // an unnessesary render)
     const scaleX = useRef(1.0)
     const scaleY = useRef(1.0)
+
+    // state variable used perfully to trigger a state change, and hence a re-render when the
+    // windows size changes
     const [, setWindowSize] = useState(0);
     
-
+    // callback function to calculate the x/y scale when the component first initialises
+    // and when the window is resized
     const setScale = useCallback(() => {
         const map = mapRef.current;
         const rect = map.getBoundingClientRect();
@@ -23,15 +36,21 @@ function Map() {
         scaleY.current = MapImage.height / rect.height;
     }, [scaleX, scaleY, MapImage.width, MapImage.height])
 
+    // callback function to recalculate the x/y scale and update the state to force a re-render
+    // when the window is resized
     const handleWindowResize = useCallback(() => {
         setScale();
         setWindowSize(window.innerWidth);
     }, [setScale]);    
 
     useEffect(() => {
+        // initialise the scale
         setScale();
+
+        // add an event lisester for when the window is resized
         window.addEventListener('resize', handleWindowResize);
         return () => {
+            // remove the window event listener when the componet is disposed off
             window.removeEventListener('resize', handleWindowResize);
         }
     }, [setScale, handleWindowResize]);
@@ -41,7 +60,7 @@ function Map() {
         return parseInt(Date.now())
     }
 
-    function handleMapClick(e) {
+    const handleMapClick = (e) => {
         const map = mapRef.current;
 
         // calculate the x/y position on the map based on the scaled size/display of the map
