@@ -1,5 +1,5 @@
 import { Header } from '../components/Header';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 export { Map }
 
@@ -7,6 +7,8 @@ function Map() {
     const MapWidth = 1600;
     const MapHeight = 900
     const mapRef = useRef(null)
+    const [tiles, setTiles] = useState([]);
+
 
     function handleMapClick(e) {
         const map = mapRef.current;
@@ -20,7 +22,16 @@ function Map() {
         var mouseX = Math.round((e.clientX - rect.left) * scaleX);
         var mouseY = Math.round((e.clientY - rect.top) * scaleY);
 
-        alert(`x:${e.clientX} y:${e.clientY - rect.top}   mouseX:${mouseX} mouseY:${mouseY}`)        
+        const tile = {
+            x: mouseX,
+            y: mouseY,
+            title: `mouseX: ${mouseX} mouseY: ${mouseY}`
+        };
+        const newTiles = [
+            ...tiles,
+            tile
+        ];
+        setTiles(newTiles);
     }
 
     return (
@@ -28,7 +39,13 @@ function Map() {
             <Header />
             <div className="remarkable-content" ref={mapRef}>
                 <div onClick={handleMapClick}>
-                    <img src="nzski-the-remarkables-map-2021-web-1600x900-map-only.jpg" alt="Terrain Map" width="100%"/>
+                    <img src="nzski-the-remarkables-map-2021-web-1600x900-map-only.jpg" alt="Terrain Map" width="100%" />
+                    {tiles.map(t => { return(
+                        <div key={t.x}>
+                            {t.title}
+                        </div>
+                    )
+                    }) }
                 </div>
             </div>
         </div>
