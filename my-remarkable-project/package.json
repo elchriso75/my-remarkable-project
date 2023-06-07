@@ -2,7 +2,7 @@
   "name": "my-remarkable-project",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://elchriso75.github.io/my-remarkable-project",
+  "x-homepage": "https://elchriso75.github.io/my-remarkable-project",
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
